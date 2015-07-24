@@ -9,7 +9,7 @@ from __future__ import absolute_import
 from behave import given, when, then
 
 from pptx import Presentation
-from pptx.parts.slide import _SlidePlaceholders
+from pptx.parts.slideplaceholders import _SlidePlaceholders
 from pptx.shapes.base import BaseShape
 from pptx.shapes.graphfrm import GraphicFrame
 from pptx.shapes.picture import Picture

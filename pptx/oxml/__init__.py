@@ -165,6 +165,8 @@ register_element_cls('p:sld',  CT_Slide)
 from .parts.slidelayout import CT_SlideLayout
 register_element_cls('p:sldLayout', CT_SlideLayout)
 
+from .parts.slidenotes import CT_SlideNotes
+register_element_cls('p:notes', CT_SlideNotes)
 
 from .parts.slidemaster import (
     CT_SlideLayoutIdList, CT_SlideLayoutIdListEntry, CT_SlideMaster

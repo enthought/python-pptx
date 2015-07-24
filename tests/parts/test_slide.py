@@ -18,7 +18,9 @@ from pptx.oxml.shapes.groupshape import CT_GroupShape
 from pptx.package import Package
 from pptx.parts.chart import ChartPart
 from pptx.parts.image import Image, ImagePart
-from pptx.parts.slide import BaseSlide, Slide, _SlidePlaceholders
+from pptx.parts.slide import Slide
+from pptx.parts.slideplaceholders import _SlidePlaceholders
+from pptx.parts.slidebase import BaseSlide
 from pptx.parts.slidelayout import SlideLayout
 from pptx.shapes.placeholder import _BaseSlidePlaceholder
 from pptx.shapes.shapetree import SlideShapeTree

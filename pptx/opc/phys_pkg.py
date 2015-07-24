@@ -11,7 +11,6 @@ import os
 from zipfile import ZipFile, is_zipfile, ZIP_DEFLATED
 
 from ..compat import is_string
-from ..exceptions import PackageNotFoundError
 
 from .packuri import CONTENT_TYPES_URI
 
@@ -28,7 +27,7 @@ class PhysPkgReader(object):
             elif is_zipfile(pkg_file):
                 reader_cls = _ZipPkgReader
             else:
-                raise PackageNotFoundError(
+                raise AssertionError(
                     "Package not found at '%s'" % pkg_file
                 )
         else:  # assume it's a stream and pass it to Zip reader to sort out

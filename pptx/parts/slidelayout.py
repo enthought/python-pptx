@@ -15,7 +15,7 @@ from ..shapes.placeholder import LayoutPlaceholder
 from ..shapes.shapetree import (
     BasePlaceholders, BaseShapeFactory, BaseShapeTree
 )
-from .slide import BaseSlide
+from pptx.parts.slidebase import BaseSlide
 from ..util import lazyproperty
 
 
