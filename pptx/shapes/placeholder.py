@@ -291,6 +291,8 @@ class LayoutPlaceholder(BasePlaceholder):
             PP_PLACEHOLDER.SUBTITLE:     PP_PLACEHOLDER.BODY,
             PP_PLACEHOLDER.TABLE:        PP_PLACEHOLDER.BODY,
             PP_PLACEHOLDER.TITLE:        PP_PLACEHOLDER.TITLE,
+            PP_PLACEHOLDER.HEADER:       PP_PLACEHOLDER.HEADER,
+            PP_PLACEHOLDER.SLIDE_IMAGE:  PP_PLACEHOLDER.BODY
         }[self.ph_type]
         slide_master = self._slide_master
         master_placeholder = slide_master.placeholders.get(

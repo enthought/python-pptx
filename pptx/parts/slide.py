@@ -87,7 +87,7 @@ class Slide(BaseSlide):
         try:
             notes_slide = self.part_related_by(RT.NOTES_SLIDE)
         except KeyError:
-            notes_slide = SlideNotes.new(self, self.partname, self.package)
+            notes_slide = SlideNotes.new(self, self.package.presentation.notesMaster, self.package)
             rId = self.relate_to(notes_slide, RT.NOTES_SLIDE)
             notes_slide.relate_to(self, RT.SLIDE)
 

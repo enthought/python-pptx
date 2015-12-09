@@ -197,6 +197,15 @@ class SlideShapeTree(BaseShapeTree):
         for placeholder in slide_layout.iter_cloneable_placeholders():
             self._clone_layout_placeholder(placeholder)
 
+    def clone_slide_placeholders(self, slide):
+        """
+        Add placeholder shapes based on those in *slide_layout*. Z-order of
+        placeholders is preserved. Latent placeholders (date, slide number,
+        and footer) are not cloned.
+        """
+        for placeholder in slide.placeholders:
+            self._clone_layout_placeholder(placeholder)
+
     def index(self, shape):
         """
         Return the index of *shape* in this sequence, raising |ValueError| if

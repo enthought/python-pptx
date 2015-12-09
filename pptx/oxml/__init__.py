@@ -147,14 +147,16 @@ register_element_cls('cp:coreProperties', CT_CoreProperties)
 
 from .parts.presentation import (
     CT_Presentation, CT_SlideId, CT_SlideIdList, CT_SlideMasterIdList,
-    CT_SlideMasterIdListEntry, CT_SlideSize
-)
-register_element_cls('p:presentation',   CT_Presentation)
-register_element_cls('p:sldId',          CT_SlideId)
-register_element_cls('p:sldIdLst',       CT_SlideIdList)
-register_element_cls('p:sldMasterId',    CT_SlideMasterIdListEntry)
-register_element_cls('p:sldMasterIdLst', CT_SlideMasterIdList)
-register_element_cls('p:sldSz',          CT_SlideSize)
+    CT_SlideMasterIdListEntry, CT_SlideSize,
+    CT_NotesMasterIdListEntry, CT_NotesMasterIdList)
+register_element_cls('p:presentation',      CT_Presentation)
+register_element_cls('p:sldId',             CT_SlideId)
+register_element_cls('p:sldIdLst',          CT_SlideIdList)
+register_element_cls('p:sldMasterId',       CT_SlideMasterIdListEntry)
+register_element_cls('p:sldMasterIdLst',    CT_SlideMasterIdList)
+register_element_cls('p:notesMasterId',     CT_NotesMasterIdListEntry)
+register_element_cls('p:notesMasterIdLst',  CT_NotesMasterIdList)
+register_element_cls('p:sldSz',             CT_SlideSize)
 
 
 from .parts.slide import CT_CommonSlideData, CT_Slide
@@ -167,6 +169,9 @@ register_element_cls('p:sldLayout', CT_SlideLayout)
 
 from .parts.slidenotes import CT_SlideNotes
 register_element_cls('p:notes', CT_SlideNotes)
+
+from .parts.notesMaster import CT_NotesMaster
+register_element_cls('p:notesMaster', CT_NotesMaster)
 
 from .parts.slidemaster import (
     CT_SlideLayoutIdList, CT_SlideLayoutIdListEntry, CT_SlideMaster

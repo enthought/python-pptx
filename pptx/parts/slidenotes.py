@@ -1,6 +1,7 @@
 import re
 from pptx.opc.constants import CONTENT_TYPE
 from pptx.opc.packuri import PackURI
+from ..opc.constants import CONTENT_TYPE as CT, RELATIONSHIP_TYPE as RT
 from pptx.shapes.shapetree import SlideShapeTree
 from pptx.util import lazyproperty, Pt
 from pptx.enum.shapes import PP_PLACEHOLDER_TYPE
@@ -15,11 +16,13 @@ class SlideNotes(BaseSlide):
   """
 
   @classmethod
-  def new(cls, slide, partname, package):
+  def new(cls, slide, notesMaster, package):
     notes_slide_elm = CT_SlideNotes.new()
-    partname = PackURI(re.sub("slide", "notesSlide", partname))
-    slide = cls(partname, CONTENT_TYPE.PML_NOTES_SLIDE, notes_slide_elm, package)
-    return slide
+    partname = PackURI(re.sub("slide", "notesSlide", slide.partname))
+    notes_slide = cls(partname, CONTENT_TYPE.PML_NOTES_SLIDE, notes_slide_elm, package)
+    notes_slide.relate_to(notesMaster, RT.NOTES_MASTER)
+    notes_slide.shapes.clone_slide_placeholders(notesMaster)
+    return notes_slide
 
   @lazyproperty
   def shapes(self):
@@ -47,8 +50,10 @@ class SlideNotes(BaseSlide):
     """
     for shape in self.shapes:
       if shape.has_text_frame and shape.is_placeholder:
-        para = shape.text_frame.add_paragraph()
-        para.text = text
+        if hasattr(shape.element, 'ph_type') and shape.element.ph_type == PP_PLACEHOLDER_TYPE.BODY:
+          para = shape.text_frame.add_paragraph()
+          para.text = text
+          return para
     return False
 
   def clear_notes(self):

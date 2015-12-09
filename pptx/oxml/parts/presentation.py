@@ -21,6 +21,9 @@ class CT_Presentation(BaseOxmlElement):
         'p:notesMasterIdLst', 'p:handoutMasterIdLst', 'p:sldIdLst',
         'p:sldSz', 'p:notesSz'
     ))
+    notesMasterIdLst = ZeroOrOne('p:notesMasterIdLst', successors=(
+        'p:handoutMasterIdLst', 'p:sldIdLst',
+        'p:sldSz', 'p:notesSz'))
     sldIdLst = ZeroOrOne('p:sldIdLst', successors=('p:sldSz', 'p:notesSz'))
     sldSz = ZeroOrOne('p:sldSz', successors=('p:notesSz',))
 
@@ -69,7 +72,25 @@ class CT_SlideMasterIdList(BaseOxmlElement):
     sldMasterId = ZeroOrMore('p:sldMasterId')
 
 
+
 class CT_SlideMasterIdListEntry(BaseOxmlElement):
+    """
+    ``<p:sldMasterId>`` element, child of ``<p:sldMasterIdLst>`` containing
+    a reference to a slide master.
+    """
+    rId = RequiredAttribute('r:id', XsdString)
+
+
+class CT_NotesMasterIdList(BaseOxmlElement):
+    """
+    ``<p:sldMasterIdLst>`` element, child of ``<p:presentation>`` containing
+    references to the slide masters that belong to the presentation.
+    """
+    notesMasterId = ZeroOrMore('p:notesMasterId')
+
+
+
+class CT_NotesMasterIdListEntry(BaseOxmlElement):
     """
     ``<p:sldMasterId>`` element, child of ``<p:sldMasterIdLst>`` containing
     a reference to a slide master.

@@ -31,6 +31,7 @@ content_type_to_part_class_map = {
     CT.PML_SLIDESHOW_MAIN:    PresentationPart,
     CT.OPC_CORE_PROPERTIES:   CoreProperties,
     CT.PML_NOTES_SLIDE:       SlideNotes,
+    CT.PML_NOTES_MASTER:      SlideMaster,
     CT.PML_SLIDE:             Slide,
     CT.PML_SLIDE_LAYOUT:      SlideLayout,
     CT.PML_SLIDE_MASTER:      SlideMaster,

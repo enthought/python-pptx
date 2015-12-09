@@ -28,6 +28,15 @@ class PresentationPart(XmlPart):
         """
         return self._element.get_or_add_sldMasterIdLst()
 
+    @property
+    def notesMaster(self):
+        el = self._element.get_or_add_notesMasterIdLst()
+        lst = el.notesMasterId_lst
+        item = lst[0]
+        rel = item.rId
+        result = self.related_parts[rel]
+        return result
+
     @lazyproperty
     def slide_masters(self):
         """
